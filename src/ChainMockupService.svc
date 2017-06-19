@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="chained_mockup_generator.ChainMockupService" CodeBehind="ChainMockupService.svc.cs" %>
