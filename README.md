@@ -10,7 +10,7 @@ Webservice that merges url parameters into an image of multiple devices showing 
 
 ### Prerequisites
 
-- Download and install imagemagick version 7.0 or newer (http://www.imagemagick.org)
+- Download and install imagemagick version 7.0 or newer (http://www.imagemagick.org) - static version recommended
 
 ### Installing
 
