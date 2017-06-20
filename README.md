@@ -3,9 +3,10 @@ Webservice that merges url parameters into an image of multiple devices showing 
 
 ## Getting Started
 
-- The script is written in C# .Net 4.5
+- This is written in C# .Net 4.5
 - You will need MS Visual Studio
 - You will need ImageMagick
+- You will need IIS installed with full privilages, as this webservice is "calling" imagemagick's magick.exe
 
 ### Prerequisites
 
@@ -13,46 +14,36 @@ Webservice that merges url parameters into an image of multiple devices showing 
 
 ### Installing
 
-- Download "Program.cs", "csv_imagemagick.csproj", "App.config", "Properties/AssemblyInfo.cs"
-- Open "csv_imagemagick.csproj" with Visual Studio and build it
-- Download the zipped "images" folder, this has all the black screen device images, shadows, etc. needed for the mockup
+- Download evrything from the src folder
+- Open the ".csproj" file with Visual Studio and build it
+- You can also use the built version from the bin folder (please note inside the bin folder there is another bin folder)
+- Copy the built version to your IIS root folder - by default this is c:\inetpub\wwwroot
+- In IIS settings set the running application pool to asp.net 4.0 (default might be 2.0)
 
-- You can also use the built version: "csv_imagemagick.exe", "csv_imagemagick.exe.config"
-
-- Create an input csv file with 5 columns (header is skipped while processing)
-...
-ID;Desktop_Image_URL;Laptop_Image_URL;Phone_Image_URL;Tablet_Image_URL
-...
-
-- Edit the config file to meet your needs:
-
-This is where the "blank" images of the devices are downloaded
-...
- <add key="ImagesFolder" value="images"></add>
-...
-
-Your input CSV file
-...
-<add key="InputFilePath" value="Devicemockup_Input.csv"></add>    
-...
-
-The separator character used in the CSV file
-...
-<add key="CSVseparator" value=";"></add>
-...
+- Edit the Web.config file to meet your needs:
 
 This is where you installed imagemagick
 ...
 <add key="ImageMagickPath" value="c:\Program Files\ImageMagick-7.0.3-Q8"></add>
 ...
 
-Make the background fully transparent or use white backgoung
+Make the background fully transparent or use white backgound
 ...
 <add key="TransparentBackgroud" value="true"></add> 
 ...
 
+Use logo image or not
+...
+<add key="Logoimage" value="true"></add> 
+...
+
+Phase 1 refers to generating images
+Phase 2 refers to creating the device mockup
+
 Name and positions for each device screen
 ...
+<!--        PHASE1        -->
+<!--        IMG1        -->
 <add key="img1_name" value="Laptop" />
 
 
@@ -74,11 +65,17 @@ Name and positions for each device screen
 
 ## Running the tests
 
-Simply build and run
+Call the service - you can simply copy this to your browser if you want:
+http://localhost/ChainMockupService.svc/script?Companyname=Anna%20Didden&Phone_no=798115437&Street=Gerbergasse%2014&Zip=4001&City=Basel&Accentcolor=%2347b403&Textcolor=%23444444&Mainpicture=http%3A%2F%2Fplacehold.it%2F860x500%2F3369E8%2Fffffff&Button_CTA_Text=Jetzt%20zum%20Angebot&ID=1&LogoImageURL=
+
+Please note, you have to URL encode every value you use here. Spaces, hashmarks, etc.
+You can use this online tool for URL encoding/decoding: https://meyerweb.com/eric/tools/dencoder/
 
 ## Deployment
 
-Copy "csv_imagemagick.exe", the edited "csv_imagemagick.exe.config" and the "images" folder to the same folder next to your input csv file.
+As above:
+- Copy the built version to your IIS root folder - by default this is c:\inetpub\wwwroot
+- In IIS settings set the running application pool to asp.net 4.0 (default might be 2.0)
 
 ## Built With
 
