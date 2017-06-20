@@ -23,25 +23,32 @@ Webservice that merges url parameters into an image of multiple devices showing 
 - Edit the Web.config file to meet your needs:
 
 This is where you installed imagemagick
-...
+
+```
 <add key="ImageMagickPath" value="c:\Program Files\ImageMagick-7.0.3-Q8"></add>
-...
+
+```
 
 Make the background fully transparent or use white backgound
-...
+
+```
 <add key="TransparentBackgroud" value="true"></add> 
-...
+
+```
 
 Use logo image or not
-...
+
+```
 <add key="Logoimage" value="true"></add> 
-...
+
+```
 
 Phase 1 refers to generating images
 Phase 2 refers to creating the device mockup
 
 Name and positions for each device screen
-...
+
+```
 <!--        PHASE1        -->
 <!--        IMG1        -->
 <add key="img1_name" value="Laptop" />
@@ -59,7 +66,8 @@ Name and positions for each device screen
 
 <add key="img1_shadow_x" value="1734" />
 <add key="img1_shadow_y" value="1012" />
-...
+
+```
 
 
 
