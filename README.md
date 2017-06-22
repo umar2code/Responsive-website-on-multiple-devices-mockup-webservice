@@ -1,6 +1,8 @@
 # Responsive-website-on-multiple-devices-mockup-webservice
 Webservice that merges url parameters into an image of multiple devices showing a website
 
+![Responsive website on multiple devices mockup webservice](https://github.com/PandaPony/Responsive-website-on-multiple-devices-mockup-webservice/blob/master/web-mockup.png)
+
 ## Getting Started
 
 - This is written in C# .Net 4.5
